@@ -175,7 +175,7 @@ class XLMConfig(PretrainedConfig):
 
 
 
-        c = torch.load("/home/kaiyuan/XLP/x1/third_party/pretrained/mlm_xnli15_1024.pth")
+        c = torch.load("/blob/kaiyuan-result/token-level/kaiyuan-1230-bfpos-80.pth")
         params = c['params']
 
 
