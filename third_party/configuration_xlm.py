@@ -215,7 +215,7 @@ class XLMConfig(PretrainedConfig):
         self.chunk_size_feed_forward = 0
         self.is_encoder_decoder = False
         self.use_return_dict = False
-        self.num_labels = 17
+        self.num_labels = 18
 
         self.n_words = 95000
 
