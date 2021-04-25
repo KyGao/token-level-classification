@@ -593,7 +593,7 @@ class XLMModel(XLMPreTrainedModel):
         # print("self.position_embeddings(position_ids): ", self.position_embeddings(position_ids).shape)
         # print("self.position_embeddings(position_ids).expand_as(tensor): ", self.position_embeddings(position_ids).expand_as(tensor).shape)
 
-        tensor += self.position_embeddings(position_ids)
+        tensor += self.position_embeddings(position_ids).expand_as(tensor)
         if token_type_ids is not None:
             tensor = tensor + self.embeddings(token_type_ids)
         tensor = self.layer_norm_emb(tensor)
