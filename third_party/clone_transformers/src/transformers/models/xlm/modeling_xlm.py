@@ -576,23 +576,9 @@ class XLMModel(XLMPreTrainedModel):
         tensor = inputs_embeds
 
         if langs is not None and self.use_lang_emb:
-            # print("I'm doing it ......")
-            with torch.no_grad():
-            # tensor = tensor + self.lang_embeddings(langs)
-                tensor = self.lang_embeddings(tensor, langs)
-
-        # print("position_ids: ", position_ids)
-        # print("======================================")
-        # print("self.position_embeddings(position_ids): ", self.position_embeddings(position_ids))
-        # print("======================================")
-        # print("self.position_embeddings(position_ids).expand_as(tensor): ", self.position_embeddings(position_ids).expand_as(tensor))
-        # print("======================================")
-        # print("tensor: ", tensor.shape)
-        # print("======================================")
-        # print("position_ids: ", position_ids.shape)
-        # print("self.position_embeddings(position_ids): ", self.position_embeddings(position_ids).shape)
-        # print("self.position_embeddings(position_ids).expand_as(tensor): ", self.position_embeddings(position_ids).expand_as(tensor).shape)
-
+            # with torch.no_grad():
+            tensor = self.lang_embeddings(tensor, langs)
+        
         tensor += self.position_embeddings(position_ids).expand_as(tensor)
         if token_type_ids is not None:
             tensor = tensor + self.embeddings(token_type_ids)
