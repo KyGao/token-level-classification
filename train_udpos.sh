@@ -43,7 +43,7 @@ fi
 DATA_DIR=$DATA_DIR/$TASK/${TASK}_processed_maxlen${MAX_LENGTH}/
 OUTPUT_DIR="$OUT_DIR/$TASK/XLP-LR${LR}-epoch${NUM_EPOCHS}-MaxLen${MAX_LENGTH}/"
 mkdir -p $OUTPUT_DIR
-python3 $REPO/third_party/ori_run_tag.py \
+CUDA_VISIBLE_DEVICES=0 python $REPO/third_party/ori_run_tag.py \
   --data_dir $DATA_DIR \
   --model_type $MODEL_TYPE \
   --labels $DATA_DIR/labels.txt \
