@@ -580,7 +580,20 @@ class XLMModel(XLMPreTrainedModel):
             with torch.no_grad():
             # tensor = tensor + self.lang_embeddings(langs)
                 tensor = self.lang_embeddings(tensor, langs)
-        # tensor += self.position_embeddings(position_ids).expand_as(tensor).to(tensor.device)
+
+        print("position_ids: ", position_ids)
+        print("======================================")
+        print("self.position_embeddings(position_ids): ", self.position_embeddings(position_ids))
+        print("======================================")
+        print("self.position_embeddings(position_ids).expand_as(tensor): ", self.position_embeddings(position_ids).expand_as(tensor))
+        print("======================================")
+        print("tensor: ", tensor.shape)
+        print("======================================")
+        print("position_ids: ", position_ids.shape)
+        print("self.position_embeddings(position_ids): ", self.position_embeddings(position_ids).shape)
+        print("self.position_embeddings(position_ids).expand_as(tensor): ", self.position_embeddings(position_ids).expand_as(tensor).shape)
+
+        tensor += self.position_embeddings(position_ids).expand_as(tensor).to(tensor.device)
         if token_type_ids is not None:
             tensor = tensor + self.embeddings(token_type_ids)
         tensor = self.layer_norm_emb(tensor)
