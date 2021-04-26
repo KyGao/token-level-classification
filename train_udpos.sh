@@ -20,7 +20,7 @@ MAX_LENGTH=$5
 
 MODEL="xlm-mlm-xnli15-1024"
 TASK='udpos'
-LANGS='ar,bg,de,el,en,es,fr,hi,ru,th,tr,ur,vi,zh'
+LANGS='ar,bg,el,en,es,fr,hi,ru,th,tr,ur,vi,zh'
 
 LC=""
 if [ $MODEL == "bert-base-multilingual-cased" ]; then
