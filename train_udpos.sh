@@ -18,7 +18,7 @@ NUM_EPOCHS=$3
 LR=$4
 MAX_LENGTH=$5
 
-MODEL="xlm-mlm-xnli15-1024"
+MODEL="xlm-mlm-100-1280"
 TASK='udpos'
 LANGS='ar,bg,de,el,en,es,fr,hi,ru,th,tr,ur,vi,zh'
 
@@ -33,15 +33,15 @@ elif [ $MODEL == "xlm-roberta-large" ] || [ $MODEL == "xlm-roberta-base" ]; then
 fi
 
 if [ $MODEL == "xlm-mlm-100-1280" ] || [ $MODEL == "xlm-roberta-large" ]; then
-  BATCH_SIZE=32
-  GRAD_ACC=1
+  BATCH_SIZE=16
+  GRAD_ACC=2
 else
   BATCH_SIZE=32
   GRAD_ACC=1
 fi
 
 DATA_DIR=$DATA_DIR/$TASK/${TASK}_processed_maxlen${MAX_LENGTH}/
-OUTPUT_DIR="$RESULT_DIR/$TASK/XLM15-LR${LR}-epoch${NUM_EPOCHS}-MaxLen${MAX_LENGTH}/"
+OUTPUT_DIR="$RESULT_DIR/$TASK/XLM100-LR${LR}-epoch${NUM_EPOCHS}-MaxLen${MAX_LENGTH}/"
 mkdir -p $OUTPUT_DIR
 CUDA_VISIBLE_DEVICES=0 python third_party/run_tag.py \
   --data_dir $DATA_DIR \
