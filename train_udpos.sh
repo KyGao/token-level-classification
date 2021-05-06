@@ -57,7 +57,6 @@ CUDA_VISIBLE_DEVICES=0 python third_party/ori_run_tag.py \
   --seed 1 \
   --learning_rate $LR \
   --do_train \
-  --do_eval \
   --do_predict \
   --do_predict_dev \
   --evaluate_during_training \
