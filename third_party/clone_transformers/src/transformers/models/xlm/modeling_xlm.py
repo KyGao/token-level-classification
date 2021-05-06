@@ -577,7 +577,7 @@ class XLMModel(XLMPreTrainedModel):
 
         if langs is not None and self.use_lang_emb:
             with torch.no_grad():
-                tensor = self.lang_embeddings(tensor, langs)
+                tensor = self.lang_embeddings(tensor, langs).clone()
         
         tensor += self.position_embeddings(position_ids).expand_as(tensor)
         if token_type_ids is not None:
