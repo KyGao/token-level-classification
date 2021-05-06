@@ -18,7 +18,7 @@ NUM_EPOCHS=$3
 LR=$4
 MAX_LENGTH=$5
 
-MODEL="xlm-mlm-100-1280"
+MODEL="xlm-mlm-xnli15-1024"
 TASK='panx'
 LANGS="ar,bg,de,el,en,es,fr,hi,ru,sw,th,tr,ur,vi,zh"
 
@@ -41,9 +41,9 @@ else
 fi
 
 DATA_DIR=$DATA_DIR/${TASK}/${TASK}_processed_maxlen${MAX_LENGTH}/
-OUTPUT_DIR="$RESULT_DIR/$TASK/XLM100-LR${LR}-epoch${NUM_EPOCHS}-MaxLen${MAX_LENGTH}/"
+OUTPUT_DIR="$RESULT_DIR/$TASK/XLP-LR${LR}-epoch${NUM_EPOCHS}-MaxLen${MAX_LENGTH}/"
 mkdir -p $OUTPUT_DIR
-CUDA_VISIBLE_DEVICES=0 python third_party/run_tag.py \
+CUDA_VISIBLE_DEVICES=0 python third_party/ori_run_tag.py \
   --data_dir $DATA_DIR \
   --model_type $MODEL_TYPE \
   --labels $DATA_DIR/labels.txt \
